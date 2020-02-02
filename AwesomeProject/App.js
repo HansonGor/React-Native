@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -18,10 +18,19 @@ import {
   Platform,
   Image,
   ImageBackground,
+  TextInput,
+  Button,
+  TouchableOpacity,
 } from 'react-native';
+
+import {handbagData} from './data';
 
 const App: () => React$Node = () => {
   const str1 = 'Hello React Native';
+  const [inputValue, setInputValue] = useState('');
+  const onButtonPress = () => {
+    alert('onButtonPress');
+  };
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -76,6 +85,44 @@ const App: () => React$Node = () => {
               <Text>123dasdasddasdasd</Text>
             </ImageBackground>
           </View>
+          <View style={styles.handbagBox}>
+            {handbagData.map(item => {
+              return (
+                <View style={styles.handbagItem} key={item.name}>
+                  <Image source={item.icon} style={styles.handbagIcon} />
+                  <Text style={styles.handbagName}>{item.name}</Text>
+                </View>
+              );
+            })}
+          </View>
+          <View>
+            {/* 获取输入内容 */}
+            <Text>{inputValue}</Text>
+            {/* IOS才拥有clearButtonMode */}
+            <TextInput
+              style={styles.textInput}
+              clearButtonMode="always"
+              keyboardType="number-pad"
+              placeholder="请输入。。。"
+              placeholderTextColor="blue"
+              multiline={true}
+              onChangeText={text => {
+                setInputValue(text);
+              }}
+            />
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <Button title="登录" onPress={onButtonPress} color="cyan" />
+            <TouchableOpacity
+              style={styles.btnStyle}
+              activeOpacity={0.5}
+              // onPress={onButtonPress}
+              // onPressIn={onButtonPress}
+              // onPressOut={onButtonPress}
+              onLongPress={onButtonPress}>
+              <Text style={{fontSize: 25, color: 'green'}}>注册账号</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </SafeAreaView>
     </>
@@ -83,6 +130,44 @@ const App: () => React$Node = () => {
 };
 
 const styles = StyleSheet.create({
+  textInput: {
+    borderColor: 'black',
+    borderWidth: 3,
+    height: 40,
+  },
+  btnStyle: {
+    width: 200,
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  handbagBox: {
+    width: Dimensions.get('window').width,
+    backgroundColor: 'blue',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+  },
+  handbagItem: {
+    width: Dimensions.get('window').width / 3 - 20,
+    height: 200,
+    marginTop: 15,
+    backgroundColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  handbagIcon: {
+    width: 50,
+    height: 50,
+  },
+  handbagName: {
+    marginTop: 15,
+    fontSize: 20,
+    color: '#ffffff',
+  },
   commonStyle: {
     lineHeight: 30,
   },
