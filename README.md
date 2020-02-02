@@ -6,7 +6,9 @@
 
 ### 一. 线上API
 ① <a href="https://reactnative.cn/docs/getting-started/">React Native中文网</a>
+<br />
 ②<a href="https://blog.csdn.net/qq_42017152/article/details/90732057">JAVA_Home环境变量配置</a>
+<br />
 ③<a href="https://pan.baidu.com/s/1Y3gVYEWx2GSFp_uWLdZDeA">所需依赖包(BaiduYun)</a>，提取码：33i6
 
 ### 二. 基于Windows环境部署
@@ -18,15 +20,15 @@
 <br />
 
 3. Android Studio的安装
-- 1. 配置Android Studio 的安装目录
+-  配置Android Studio 的安装目录
 <img src="./images/studio安装目录.jpg" />
 
-- 2. Android SDK的安装
-  - 1. 官网说明
+- Android SDK的安装
+  - 官网说明
   <img src="./images/AndroidSDK官网要求依赖.jpg" />
   <img src="./images/AndroidSDK依赖安装.jpg">
   <br />
-  - 2. 安装流程
+  - 安装流程
   步骤一：配置Android SDK的安装目录
   <img src="./images/Android SDK安装1.jpg" />
   <br />
@@ -42,8 +44,10 @@
 <br />
 
 4. Windows环境变量配置
+  <br />
   <b>图1:</b>
   <img src="./images/ANDROID_HOME环境变量配置.jpg" />
+  <br />
   <b>图2:</b>
   <img src="./images/JAVA_HOME环境变量配置.jpg" />
 
