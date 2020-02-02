@@ -20,15 +20,17 @@
 <br />
 
 3. Android Studio的安装
--  配置Android Studio 的安装目录
+-  ①配置Android Studio 的安装目录
 <img src="./images/studio安装目录.jpg" />
 
 - Android SDK的安装
   - 官网说明
+  <b>图1:官网所需依赖</b>
   <img src="./images/AndroidSDK官网要求依赖.jpg" />
+  <b>图2:官网所需环境</b>
   <img src="./images/AndroidSDK依赖安装.jpg">
   <br />
-  - 安装流程
+  - ②安装流程
   步骤一：配置Android SDK的安装目录
   <img src="./images/Android SDK安装1.jpg" />
   <br />
@@ -39,16 +41,18 @@
   <img src="./images/AndroidSDK安装虚拟机.jpg" />
   <br />
    步骤四：通过SDK Manager，配置安卓平台环境
+  <b>图1:SDK配置入口</b>
   <img src="./images/AndroidSDK环境依赖配置.jpg" />
+  <b>图2:SDK环境配置</b>
   <img src="./images/AndroidSDK平台环境官方说明.jpg" />
 <br />
 
 4. Windows环境变量配置
   <br />
-  <b>图1:</b>
+  <b>图1:ANDROID_HOME环境变量配置</b>
   <img src="./images/ANDROID_HOME环境变量配置.jpg" />
   <br />
-  <b>图2:</b>
+  <b>图2:JAVA_HOME环境变量配置</b>
   <img src="./images/JAVA_HOME环境变量配置.jpg" />
 
 5. Start: Hello React Native
