@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -20,6 +20,7 @@ import {
   HanView,
   HanText,
   HanImages,
+  HanImageBackground,
   HanExample1,
   HanInputText,
   HanButton,
@@ -30,14 +31,32 @@ import {
   HanRefresh,
 } from './components';
 
-import HanImageBackground from './components/HanImageBackground';
+import {refreshData} from './data';
 
 const App: () => React$Node = () => {
   const str1 = 'Hello React Native';
-  const [refreshLoading, setRefreshLoading] = useState(true);
+  const [refreshLoading, setRefreshLoading] = useState(false);
+  const [dataList, setDataList] = useState([]);
+  const getData = useCallback(() => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        const newDataList = [...refreshData, ...dataList];
+        setDataList(newDataList);
+        resolve();
+      }, 2000);
+    });
+  });
   const onRefresh = () => {
     setRefreshLoading(true);
+    getData().then(() => setRefreshLoading(false));
   };
+  const expensiveDataList = useCallback(() => {
+    return dataList;
+  }, [dataList]);
+  useEffect(() => {
+    onRefresh();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <HanStatusBar />
@@ -49,10 +68,7 @@ const App: () => React$Node = () => {
           <View>
             <Text style={styles.hanTitle}>{str1}</Text>
           </View>
-          <HanRefresh
-            isRefresh={refreshLoading}
-            setRefresh={setRefreshLoading}
-          />
+          <HanRefresh _dataList={expensiveDataList} />
           <HanSwiper />
           <HanSwitch />
           <HanView />

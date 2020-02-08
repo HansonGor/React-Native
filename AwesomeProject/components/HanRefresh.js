@@ -1,25 +1,13 @@
 import React, {useState, useEffect} from 'react';
 
-import {refreshData} from '../data';
-
 import {View, Text, Dimensions, StyleSheet} from 'react-native';
 
-const HanRefresh = ({isRefresh, setRefresh}) => {
+const HanRefresh = ({_dataList}) => {
   const [dataList, setDataList] = useState([]);
-  const getData = () => {
-    if (!isRefresh) {
-      return false;
-    }
-    setTimeout(() => {
-      const newDataList = [...dataList, ...refreshData];
-      setRefresh(false);
-      setDataList(newDataList);
-    }, 2000);
-  };
   useEffect(() => {
-    console.log('刷新中啊。。。');
-    getData();
-  });
+    setDataList(_dataList());
+    console.log('刷新了啊。。。');
+  }, [_dataList]);
   return (
     <>
       <View style={styles.hanHandbagBox}>
