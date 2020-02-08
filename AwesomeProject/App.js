@@ -29,6 +29,8 @@ import {
   HanSwitch,
   HanSwiper,
   HanRefresh,
+  HanFlatlist,
+  HanSectionlist,
 } from './components';
 
 import {refreshData} from './data';
@@ -69,6 +71,8 @@ const App: () => React$Node = () => {
             <Text style={styles.hanTitle}>{str1}</Text>
           </View>
           <HanRefresh _dataList={expensiveDataList} />
+          {/* <HanFlatlist /> */}
+          {/* <HanSectionlist /> */}
           <HanSwiper />
           <HanSwitch />
           <HanView />

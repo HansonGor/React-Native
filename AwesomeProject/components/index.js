@@ -10,6 +10,8 @@ import HanStatusBar from './HanStatusBar';
 import HanSwitch from './HanSwitch';
 import HanSwiper from './HanSwiper';
 import HanRefresh from './HanRefresh';
+import HanFlatlist from './HanFlatlist';
+import HanSectionlist from './HanSectionlist';
 
 export {
   HanView,
@@ -24,4 +26,6 @@ export {
   HanSwitch,
   HanSwiper,
   HanRefresh,
+  HanFlatlist,
+  HanSectionlist,
 };

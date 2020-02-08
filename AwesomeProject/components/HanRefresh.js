@@ -10,7 +10,7 @@ const HanRefresh = ({_dataList}) => {
   }, [_dataList]);
   return (
     <>
-      <View style={styles.hanHandbagBox}>
+      <View>
         {dataList.map((item, i) => {
           return (
             <View style={styles.box} key={i}>
