@@ -35,9 +35,9 @@ import {refreshData} from './data';
 
 const App: () => React$Node = () => {
   const str1 = 'Hello React Native';
-  const [refreshLoading, setRefreshLoading] = useState(false);
+  const [refreshLoading, setRefreshLoading] = useState(true);
   const [dataList, setDataList] = useState([]);
-  const getData = useCallback(() => {
+  const getData = () => {
     return new Promise(resolve => {
       setTimeout(() => {
         const newDataList = [...refreshData, ...dataList];
@@ -45,7 +45,7 @@ const App: () => React$Node = () => {
         resolve();
       }, 2000);
     });
-  });
+  };
   const onRefresh = () => {
     setRefreshLoading(true);
     getData().then(() => setRefreshLoading(false));
@@ -54,7 +54,7 @@ const App: () => React$Node = () => {
     return dataList;
   }, [dataList]);
   useEffect(() => {
-    onRefresh();
+    getData().then(() => setRefreshLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
