@@ -1,3 +1,5 @@
 import handbagData from './handbagData';
+import opData from './opData';
+import refreshData from './refreshData';
 
-export {handbagData};
+export {handbagData, opData, refreshData};
