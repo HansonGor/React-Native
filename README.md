@@ -1,8 +1,11 @@
-# React Native
+<h2>React Native</h2>
 
-<!-- TOC -->     
-  - [一. 线上API](#一-线上api)     
-  - [二. 基于Windows环境部署](#二-基于windows环境部署)
+<!-- TOC -->
+
+- [一. 线上API](#%e4%b8%80-%e7%ba%bf%e4%b8%8aapi)
+- [二. 基于Windows环境部署](#%e4%ba%8c-%e5%9f%ba%e4%ba%8ewindows%e7%8e%af%e5%a2%83%e9%83%a8%e7%bd%b2)
+- [三. React Native Swiper setup](#%e4%b8%89-react-native-swiper-setup)
+- [四. React Native Navigation setup](#%e5%9b%9b-react-native-navigation-setup)
 
 ### 一. 线上API
 ① <a href="https://reactnative.cn/docs/getting-started/">React Native中文网</a>
@@ -10,6 +13,10 @@
 ②<a href="https://blog.csdn.net/qq_42017152/article/details/90732057">JAVA_Home环境变量配置</a>
 <br />
 ③<a href="https://pan.baidu.com/s/1Y3gVYEWx2GSFp_uWLdZDeA">所需依赖包(BaiduYun)</a>，提取码：33i6
+<br />
+④<a href="https://github.com/leecade/react-native-swiper">React Swiper Github</a>
+<br />
+⑤<a href="https://reactnavigation.org/zh-Hans/">React Navigation官网</a>
 
 ### 二. 基于Windows环境部署
 
@@ -61,5 +68,46 @@
 npx react-native init AwesomeProject
 
 npx react-native run-android
+
+```
+
+### 三. React Native Swiper setup
+
+```cmd
+
+yarn add react-native-swiper --save
+
+```
+
+recommand:
+```cmd
+
+yarn add --save react-native-swiper@nightly
+
+```
+
+### 四. React Native Navigation setup
+
+①：第一步
+```cmd
+
+yarn add @react-navigation/native @react-navigation/stack -S
+
+yatn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view -S
+
+```
+
+②：第二步: 进入android/app/build.gradle，在dependencies复制以下方式
+```
+
+implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
+
+```
+
+③: 第三步（看需求）：其它安装
+```cmd
+
+yarn add @react-navigation/bottom-tabs -S
 
 ```

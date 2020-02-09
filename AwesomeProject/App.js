@@ -6,100 +6,104 @@
  * @flow
  */
 
-import React, {useState, useEffect, useCallback} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  RefreshControl,
-} from 'react-native';
+import React from 'react';
 
-import {
-  HanView,
-  HanText,
-  HanImages,
-  HanImageBackground,
-  HanExample1,
-  HanInputText,
-  HanButton,
-  HanTouchableOpactity,
-  HanStatusBar,
-  HanSwitch,
-  HanSwiper,
-  HanRefresh,
-  HanFlatlist,
-  HanSectionlist,
-} from './components';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Text, Button, Image} from 'react-native';
 
-import {refreshData} from './data';
+import Home from './pages/Home';
+import Two from './pages/Two';
+import Three from './pages/Three';
+
+import HomeStack from './navigator/HomeStack';
+import TwoStack from './navigator/TwoStack';
+import ThreeStack from './navigator/ThreeStack.';
+
+import Navigator from './navigator';
+
+const Stack = createStackNavigator();
+
+const Tab = createBottomTabNavigator();
 
 const App: () => React$Node = () => {
-  const str1 = 'Hello React Native';
-  const [refreshLoading, setRefreshLoading] = useState(true);
-  const [dataList, setDataList] = useState([]);
-  const getData = () => {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        const newDataList = [...refreshData, ...dataList];
-        setDataList(newDataList);
-        resolve();
-      }, 2000);
-    });
-  };
-  const onRefresh = () => {
-    setRefreshLoading(true);
-    getData().then(() => setRefreshLoading(false));
-  };
-  const expensiveDataList = useCallback(() => {
-    return dataList;
-  }, [dataList]);
-  useEffect(() => {
-    getData().then(() => setRefreshLoading(false));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
-    <>
-      <HanStatusBar />
-      <SafeAreaView>
-        <ScrollView
-          refreshControl={
-            <RefreshControl refreshing={refreshLoading} onRefresh={onRefresh} />
-          }>
-          <View>
-            <Text style={styles.hanTitle}>{str1}</Text>
-          </View>
-          <HanRefresh _dataList={expensiveDataList} />
-          {/* <HanFlatlist /> */}
-          {/* <HanSectionlist /> */}
-          <HanSwiper />
-          <HanSwitch />
-          <HanView />
-          <HanText />
-          <HanImages />
-          <HanImageBackground />
-          <HanExample1 />
-          <HanInputText />
-          <View style={{alignItems: 'center'}}>
-            <HanButton />
-            <HanTouchableOpactity />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <NavigationContainer>
+      <Navigator />
+    </NavigationContainer>
+    // <NavigationContainer>
+    //   <Tab.Navigator>
+    //     <Tab.Screen
+    //       name="Home"
+    //       component={HomeStack}
+    //       options={{
+    //         tabBarLabel: '主页',
+    //         tabBarIcon: ({focused}) =>
+    //           focused ? (
+    //             <Image source={require('./images/home2.png')} />
+    //           ) : (
+    //             <Image source={require('./images/home.png')} />
+    //           ),
+    //         setOp,,
+    //       }}
+    //     />
+    //     <Tab.Screen
+    //       name="Two"
+    //       component={TwoStack}
+    //       options={{
+    //         tabBarLabel: '其它',
+    //         tabBarIcon: ({focused}) =>
+    //           focused ? (
+    //             <Image source={require('./images/auto2.png')} />
+    //           ) : (
+    //             <Image source={require('./images/auto.png')} />
+    //           ),
+    //       }}
+    //     />
+    //     <Tab.Screen
+    //       name="Three"
+    //       component={ThreeStack}
+    //       options={{
+    //         tabBarLabel: '个人',
+    //         tabBarIcon: ({focused}) =>
+    //           focused ? (
+    //             <Image source={require('./images/personal2.png')} />
+    //           ) : (
+    //             <Image source={require('./images/personal.png')} />
+    //           ),
+    //       }}
+    //     />
+    //   </Tab.Navigator>
+    // </NavigationContainer>
+    //   <NavigationContainer>
+    //     <Stack.Navigator initialRouteName="Two">
+    //       <Stack.Screen name="Home" component={Home} />
+    //       <Stack.Screen
+    //         name="Two"
+    //         component={Two}
+    //         options={{
+    //           headerTitle: <Text>Twos</Text>,
+    //           headerRight: () => (
+    //             <Button
+    //               onPress={() => alert('This is a right button!')}
+    //               title="左边"
+    //               color="cyan"
+    //             />
+    //           ),
+    //           headerLeft: () => (
+    //             <Button
+    //               onPress={() => alert('This is a left button!')}
+    //               title="右边"
+    //               color="cyan"
+    //             />
+    //           ),
+    //         }}
+    //       />
+    //       <Stack.Screen name="Three" component={Three} />
+    //     </Stack.Navigator>
+    //   </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  commonStyle: {
-    lineHeight: 30,
-  },
-  hanTitle: {
-    textAlign: 'center',
-    color: 'red',
-    fontSize: 50,
-  },
-});
 
 export default App;
