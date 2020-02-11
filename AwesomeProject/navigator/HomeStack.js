@@ -9,12 +9,13 @@ import HomeDetail from '../pages/HomeDetail';
 
 const Stack = createStackNavigator();
 
-const HomeStack = ({navigation, route}) => {
+const HomeStack = ({navigation}) => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
-      options={{
-        tabBarVisible: false,
+      screenOptions={({route}) => {
+        console.log(route);
+        return {tabBarVisible: false};
       }}>
       <Stack.Screen
         name="Home"
@@ -33,28 +34,6 @@ const HomeStack = ({navigation, route}) => {
             <Button
               onPress={() => navigation.navigate('HomeDetail')}
               title="详情"
-              color="cyan"
-            />
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="HomeDetail"
-        component={HomeDetail}
-        options={{
-          headerTitle: <Text style={{alignSelf: 'center'}}>详情页</Text>,
-          headerTitleAlign: 'center',
-          headerRight: () => (
-            <Button
-              onPress={() => alert('This is a right button!')}
-              title="扫一扫"
-              color="cyan"
-            />
-          ),
-          headerLeft: () => (
-            <Button
-              onPress={() => navigation.goBack()}
-              title="返回"
               color="cyan"
             />
           ),

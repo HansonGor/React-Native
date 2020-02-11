@@ -17,6 +17,8 @@
 ④<a href="https://github.com/leecade/react-native-swiper">React Swiper Github</a>
 <br />
 ⑤<a href="https://reactnavigation.org/zh-Hans/">React Navigation官网</a>
+<br />
+⑤<a href="https://reactnative.cn/docs/signed-apk-android/">React Native Android APK 打包教程</a>
 
 ### 二. 基于Windows环境部署
 

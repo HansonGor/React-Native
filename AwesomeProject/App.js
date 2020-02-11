@@ -27,7 +27,7 @@ const Stack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <NavigationContainer>
       <Navigator />

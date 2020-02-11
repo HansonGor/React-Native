@@ -1,0 +1,8 @@
+The Project construction :
+|- AppScreen : BottomTabBarNavigator 
+              l- Home: StackNavigator
+                    |
+                 l- HomeDetail: StackNavigator
+              l- Two: StackNavigator
+              l- Three: StackNavigator
+              
